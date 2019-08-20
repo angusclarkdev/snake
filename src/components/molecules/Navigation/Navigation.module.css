@@ -1,0 +1,13 @@
+.navBar {
+  margin: 0;
+  padding: 10px;
+  background-color: red;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.navListItem {
+  list-style: none;
+  padding: 16px;
+}

@@ -1,0 +1,17 @@
+@import '../../resources/variables/spacing.scss';
+
+li {
+  list-style: none;
+  padding: 5px;
+}
+
+.recipeWrapper { 
+  width: 961px;
+  display: flex;
+  flex-direction: row;
+  padding: $spacing-1;
+}
+
+.recipeItem {
+  margin: 16px;
+}
