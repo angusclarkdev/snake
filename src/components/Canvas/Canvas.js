@@ -1,33 +1,50 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import styled from 'styled-components'
-import Snake from '@components/Snake'
 
-const Container = styled.canvas`
+const Canvas = styled.canvas`
   position: absolute;
-  border: thin solid red;
-  height: 700px;
+  border: 1px solid red;
   width: 900px;
+  height: 700px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 `
-const Target = styled.div`
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  background-color: red;
-  position: relative;
-  left: 50%;
-  top: 50%;
-`
+// const rect = (vals) => {
+//   const { x, y, width, height } = vals
+//   ctx.fillRect(x, y, width, height)
+// }
 
-const Canvas = () => {
+const createTopLayer = (canvas, ctx) => {
+  let { width, height } = canvas
+  let widthAcc = 0
+  let heightAcc = 0
+  // coordinates
+  while (widthAcc < width - 10) {
+    ctx.fillRect(widthAcc, 0, 9, 5)
+     widthAcc += 10
+  }
+
+//   while (heightAcc < height - 6) {
+//     ctx.fillRect(0, heightAcc, 9, 5)
+//     heightAcc += 6
+//   }
+//   ctx.fillRect(widthAcc, 0, 10, 5)
+//   ctx.fillRect(0, heightAcc, 9, 6)
+// }
+
+const gameArea = () => {
+  const canvasRef = useRef(null)
+  useEffect(() => createCanvas())
+  const createCanvas = () => {
+    const ctx = canvasRef.current.getContext('2d')
+    console.dir(canvasRef.current)
+    createTopLayer(canvasRef.current, ctx)
+  }
+
   return (
-    <Container id='canvas'>
-      <Snake />
-      <Target />
-    </Container>
+    <Canvas ref={canvasRef} />
   )
 }
 
-export default Canvas
+export default gameArea
